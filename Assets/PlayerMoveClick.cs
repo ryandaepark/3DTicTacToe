@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class PlayerMoveClick : MonoBehaviour
 {
-    private Button buttonColor;
+    private BallSpawner bs;
     private Color p1_color;
     private Color p2_color;
-    private BallSpawner bs;
-    
+    private Image image;
+
     // Start is called before the first frame update
     void Start()
     {
-        buttonColor = gameObject.GetComponent<Button>();
-        p1_color = new Color(255, 66, 66, 255);
-        p2_color = new Color(57, 152, 255, 255);
+        image = gameObject.GetComponent<Image>();
+        p1_color = new Color32(255, 66, 66, 255);
+        p2_color = new Color32(57, 152, 255, 255);
         bs = GameObject.Find("3D Container").GetComponent<BallSpawner>();
-        
     }
 
     // Update is called once per frame
@@ -30,10 +29,7 @@ public class PlayerMoveClick : MonoBehaviour
     {
         //send text of parent and button with stringbuilder to ball spawner in BallSpawner.cs
         string target = gameObject.transform.parent.name + " " + gameObject.name;
-
-        //change later when p2 works
-        buttonColor.colors.normalColor.Equals(p1_color);
-
-        bs.SpawnBall(target);
+        image.color = p1_color;
+        bs.SpawnBall(target, image);
     }
 }
