@@ -8,7 +8,6 @@ public class BallSpawner : MonoBehaviour
     
     public GameObject redSphere;
     public GameObject blueSphere;
-    public string ballTransform;
 
     private Dictionary<string, Dictionary<string, GameObject>> targets;
 
@@ -35,12 +34,18 @@ public class BallSpawner : MonoBehaviour
     }
 
     //Needs to be tested if functional!!!!
-    private GameObject ReadString()
+    public void SpawnBall(string input)
     {
-        string[] xyz = ballTransform.Split(' ');
+        string[] xyz = input.Split(' ');
 
         Dictionary<string, GameObject> layer = targets[xyz[0]];
 
-        return layer[xyz[1]];
+        GameObject target =  layer[xyz[1]];
+
+        //change color later
+        GameObject gamePiece = Instantiate(redSphere);
+        gamePiece.transform.SetParent(target.transform);
+        gamePiece.transform.position = new Vector3(0, 0, 0);
     }
+
 }
