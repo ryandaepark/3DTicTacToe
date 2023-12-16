@@ -52,6 +52,7 @@ MonoBehaviour:
     type: 3}
   blueSphere: {fileID: 5501231820488966849, guid: 13abba09342a7234a9a7bc237267b483,
     type: 3}
+  ballTransform: 
 --- !u!1 &162364276341874836
 GameObject:
   m_ObjectHideFlags: 0

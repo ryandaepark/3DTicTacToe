@@ -23,4 +23,5 @@ public class PlayerCanvasHandler : MonoBehaviour
     {
         Panel.SetActive(toggled);
     }
+
 }

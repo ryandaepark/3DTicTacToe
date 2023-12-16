@@ -43,9 +43,7 @@ public class BallSpawner : MonoBehaviour
         GameObject target =  layer[xyz[1]];
 
         //change color later
-        GameObject gamePiece = Instantiate(redSphere);
-        gamePiece.transform.SetParent(target.transform);
-        gamePiece.transform.position = new Vector3(0, 0, 0);
+        Instantiate(redSphere, target.transform);
     }
 
 }
