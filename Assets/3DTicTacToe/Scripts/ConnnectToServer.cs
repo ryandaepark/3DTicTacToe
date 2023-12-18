@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class ConnnectToServer : MonoBehaviourPunCallbacks
 {
@@ -11,13 +12,11 @@ public class ConnnectToServer : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("hello 1");
     }
 
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        Debug.Log("hello 2");
         Loading.SetActive(false);
         Buttons.SetActive(true);
     }
@@ -25,16 +24,20 @@ public class ConnnectToServer : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        PhotonNetwork.LoadLevel("Playground");
+        PhotonNetwork.LoadLevel("3DTicTacToe");
+
     }
+
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom("Playground");
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
+        PhotonNetwork.CreateRoom("3DTicTacToe", roomOptions);
     }
 
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom("Playground");
+        PhotonNetwork.JoinRoom("3DTicTacToe");
     }
 }
     // Update is called once per frame
