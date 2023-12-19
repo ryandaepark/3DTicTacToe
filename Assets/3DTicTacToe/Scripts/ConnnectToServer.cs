@@ -25,7 +25,6 @@ public class ConnnectToServer : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         PhotonNetwork.LoadLevel("3DTicTacToe");
-
     }
 
     public void CreateRoom()
@@ -40,6 +39,5 @@ public class ConnnectToServer : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom("3DTicTacToe");
     }
 }
-    // Update is called once per frame
     
    
