@@ -8,6 +8,7 @@ public class PlayerCanvasHandler : MonoBehaviour
     public GameObject Panel;
     public GameObject uiCube;
     public Dictionary<string, Image> uiTargets;
+    public Button backButton;
 
     public void Start()
     {
@@ -20,6 +21,8 @@ public class PlayerCanvasHandler : MonoBehaviour
                 uiTargets.Add(child.name + xy.name, xy.GetComponent<Image>());
             }
         }
+        BallSpawner bs = GameObject.Find("3D Container").GetComponent<BallSpawner>();
+        backButton.onClick.AddListener(() => bs.DeleteBall());
     }
 
     public void ToggleUI(bool toggled)
@@ -31,4 +34,5 @@ public class PlayerCanvasHandler : MonoBehaviour
     {
         return uiTargets[s];
     }
+
 }

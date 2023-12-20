@@ -14,7 +14,6 @@ public class BallSpawner : MonoBehaviour
     public Stack<GameObject> lastMove;
     public Stack<Image> lastMoveButtonColor;
     //Fill UI targets through PlayerMoveClick in each 
-    public Dictionary<string, Image> uiTargets;
 
     private Dictionary<string, GameObject> targets;
     private PhotonView photonView;
@@ -30,7 +29,7 @@ public class BallSpawner : MonoBehaviour
         //Initialize
         lastMove = new Stack<GameObject>();
         lastMoveButtonColor = new Stack<Image>();
-
+        uiCanvases = new List<PlayerCanvasHandler>();
         isP1 = GameObject.Find("PhotonPlayerHandler").GetComponent<PhotonPlayersHandler>().isP1;
 
 
@@ -47,7 +46,6 @@ public class BallSpawner : MonoBehaviour
 
     private void GetUiTargets()
     {
-        uiCanvases = new List<PlayerCanvasHandler>();
         GameObject[] players = GameObject.FindGameObjectsWithTag("UiCube");
         foreach (GameObject player in players)
         {
@@ -72,7 +70,7 @@ public class BallSpawner : MonoBehaviour
     {
         GameObject target = targets[input];
 
-        if(uiTargets == null)
+        if(uiCanvases.Count == 0)
         {
             GetUiTargets();
         }
@@ -81,7 +79,7 @@ public class BallSpawner : MonoBehaviour
         if (target.transform.childCount < 1)
         {
             //update 3d model
-            var spawned = isP1 ? Instantiate(redSphere, target.transform) : Instantiate(blueSphere, target.transform);
+            GameObject spawned = isP1 ? Instantiate(redSphere, target.transform) : Instantiate(blueSphere, target.transform);
             lastMove.Push(spawned);
 
 
