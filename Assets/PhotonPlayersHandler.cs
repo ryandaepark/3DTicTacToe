@@ -15,6 +15,4 @@ public class PhotonPlayersHandler : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient) {isP1 = true; } 
         if(isP1) { myTurn = true; }
     }
-
-    
 }

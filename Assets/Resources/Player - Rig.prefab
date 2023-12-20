@@ -864,6 +864,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ',1'
       objectReference: {fileID: 0}
+    - target: {fileID: 1786686403222280624, guid: 2eeb292fabd0af841bd97c06f6f12c3e,
+        type: 3}
+      propertyPath: uiCube
+      value: 
+      objectReference: {fileID: 4899283834228818967}
     - target: {fileID: 2048711048681485769, guid: 2eeb292fabd0af841bd97c06f6f12c3e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1211,6 +1216,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eeb292fabd0af841bd97c06f6f12c3e, type: 3}
+--- !u!1 &4899283834228818967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 749571078136372197, guid: 2eeb292fabd0af841bd97c06f6f12c3e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5303765211696357362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5689381938672931953 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 535502736228338563, guid: 2eeb292fabd0af841bd97c06f6f12c3e,
