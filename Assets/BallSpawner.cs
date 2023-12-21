@@ -11,10 +11,12 @@ public class BallSpawner : MonoBehaviour
 
     public GameObject redSphere;
     public GameObject blueSphere;
-    public Stack<GameObject> lastMove;
-    public Stack<Image> lastMoveButtonColor;
-    //Fill UI targets through PlayerMoveClick in each 
 
+    //Store previous moves
+    public Stack<GameObject> lastMove;
+    public Stack<Image> lastMoveButtonColors;
+
+    //Keep reference to name to 3D spheres
     private Dictionary<string, GameObject> targets;
     private PhotonView photonView;
     private bool isP1;
@@ -28,10 +30,9 @@ public class BallSpawner : MonoBehaviour
 
         //Initialize
         lastMove = new Stack<GameObject>();
-        lastMoveButtonColor = new Stack<Image>();
+        lastMoveButtonColors = new Stack<Image>();
         uiCanvases = new List<PlayerCanvasHandler>();
         isP1 = GameObject.Find("PhotonPlayerHandler").GetComponent<PhotonPlayersHandler>().isP1;
-
 
         //Store all Transforms from all cube gameobjects into Dictionary for quick retrieval from 3D game model
         targets = new Dictionary<string, GameObject>();
@@ -44,6 +45,7 @@ public class BallSpawner : MonoBehaviour
         }
     }
 
+    //Fill UI board reference with string key
     private void GetUiTargets()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("UiCube");
@@ -54,15 +56,22 @@ public class BallSpawner : MonoBehaviour
         }
     }
 
+    //Spawn 3D sphere on 3D model and on UI screen
     public void SpawnBall(string input, bool isP1)
     {
         photonView.RPC(nameof(RPC_SpawnBall), RpcTarget.AllBuffered, new object[] { input, isP1 });
     }
 
+    //Delete 3D sphere from last move and on UI screen
     public void DeleteBall()
     {
-        Debug.Log("RPC  delete ball");
         photonView.RPC(nameof(RPC_DeleteBall), RpcTarget.AllBuffered);
+    }
+
+    //Clear 3D sphere from last move and on UI screen
+    public void ClearBoard()
+    {
+        photonView.RPC(nameof(RPC_ClearBoard), RpcTarget.AllBuffered);
     }
 
     [PunRPC]
@@ -70,25 +79,24 @@ public class BallSpawner : MonoBehaviour
     {
         GameObject target = targets[input];
 
-        if(uiCanvases.Count == 0)
+        if (uiCanvases.Count == 0)
         {
             GetUiTargets();
         }
 
-        //change color later
         if (target.transform.childCount < 1)
         {
             //update 3d model
             GameObject spawned = isP1 ? Instantiate(redSphere, target.transform) : Instantiate(blueSphere, target.transform);
             lastMove.Push(spawned);
 
-
             //update ui
-            foreach(PlayerCanvasHandler uiCanvas in uiCanvases)
+            //There are 2 players maximum in the room so both playercanvashandlers need to be added
+            foreach (PlayerCanvasHandler uiCanvas in uiCanvases)
             {
                 Image i = uiCanvas.Get3dImage(input);
                 i.color = isP1 ? p1_color : p2_color;
-                lastMoveButtonColor.Push(i);
+                lastMoveButtonColors.Push(i);
             }
         }
     }
@@ -98,7 +106,20 @@ public class BallSpawner : MonoBehaviour
     {
         if (lastMove.Count > 0)
         {
-            lastMoveButtonColor.Pop().color = Color.white;
+            lastMoveButtonColors.Pop().color = Color.white;
+            lastMoveButtonColors.Pop().color = Color.white;
+            Destroy(lastMove.Pop());
+        }
+    }
+
+    [PunRPC]
+    private void RPC_ClearBoard()
+    {
+        while (lastMoveButtonColors.Count > 0)
+        {
+            //pop twice for ui bc there are 2 ui per move 
+            lastMoveButtonColors.Pop().color = Color.white;
+            lastMoveButtonColors.Pop().color = Color.white;
             Destroy(lastMove.Pop());
         }
     }

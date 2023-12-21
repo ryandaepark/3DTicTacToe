@@ -10,13 +10,11 @@ public class PlayerMoveClick : MonoBehaviourPun
     private BallSpawner bs;
     private bool isP1;
 
-    // Start is called before the first frame update
     void Start()
     {
         bs = GameObject.Find("3D Container").GetComponent<BallSpawner>();
         isP1 = GameObject.Find("PhotonPlayerHandler").GetComponent<PhotonPlayersHandler>().isP1;
     }
-
 
     public void OnClick()
     {

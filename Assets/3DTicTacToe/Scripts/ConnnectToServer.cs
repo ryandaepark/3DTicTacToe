@@ -8,7 +8,7 @@ public class ConnnectToServer : MonoBehaviourPunCallbacks
 {
     public GameObject Loading;
     public GameObject Buttons;
-    // Start is called before the first frame update
+
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();

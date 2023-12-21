@@ -9,10 +9,11 @@ public class PlayerCanvasHandler : MonoBehaviour
     public GameObject uiCube;
     public Dictionary<string, Image> uiTargets;
     public Button backButton;
+    public Button clearButton;
 
     public void Start()
     {
-        //Store all Transforms from all cube gameobjects into Dictionary for quick retrieval from 3D game model
+        //Store all Transforms from all ui cube buttons
         uiTargets = new Dictionary<string, Image>();
         foreach (Transform child in uiCube.transform)
         {
@@ -23,6 +24,7 @@ public class PlayerCanvasHandler : MonoBehaviour
         }
         BallSpawner bs = GameObject.Find("3D Container").GetComponent<BallSpawner>();
         backButton.onClick.AddListener(() => bs.DeleteBall());
+        clearButton.onClick.AddListener(() => bs.ClearBoard());
     }
 
     public void ToggleUI(bool toggled)

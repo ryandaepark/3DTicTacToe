@@ -47,6 +47,7 @@ MonoBehaviour:
   - RPC_DeleteBall
   - RPC_SpawnBall
   - RPC_PlayerMove
+  - RPC_ClearBoard
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
