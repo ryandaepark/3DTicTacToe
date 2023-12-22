@@ -51,7 +51,11 @@ Multiplayer<br />
    ```sh
    git clone https://github.com/your_username_/3DTicTacToe.git
    ```
-2. Press Play
+2. Add own Photon AppIdRealTime and AppIdVoice to
+   ```sh
+   C:\Users\ryanp\OneDrive\Documents\GitHub\3DTicTacToe\Assets\Photon\PhotonUnityNetworking\Resources\PhotonServerSettings.asset
+   ```
+4. Press Play
    
 
 <!-- USAGE EXAMPLES -->
