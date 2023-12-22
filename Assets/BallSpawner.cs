@@ -94,6 +94,7 @@ public class BallSpawner : MonoBehaviour
             //There are 2 players maximum in the room so both playercanvashandlers need to be added
             foreach (PlayerCanvasHandler uiCanvas in uiCanvases)
             {
+                uiCanvas.ToggleUI(true);
                 Image i = uiCanvas.Get3dImage(input);
                 i.color = isP1 ? p1_color : p2_color;
                 lastMoveButtonColors.Push(i);

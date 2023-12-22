@@ -653,7 +653,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isP1: 0
-  myTurn: 0
 --- !u!1 &1028513131
 GameObject:
   m_ObjectHideFlags: 0
