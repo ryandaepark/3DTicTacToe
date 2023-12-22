@@ -13,6 +13,7 @@
     <li>
       <ul>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -28,7 +29,13 @@ A Game of 3D Tic Tac Toe which uses a 4x4x4 layer. I created this game to play a
 Controls:<br />
 WASD: Move<br />
 Right Click Hold: Turn Camera<br />
-Left Click Hold: Click <br />
+Left Click: Interact <br />
+
+Features:<br />
+Proximity voice <br />
+Undo <br />
+Clear<br />
+Multiplayer<br />
 
 ### Built With
 
@@ -49,4 +56,17 @@ Left Click Hold: Click <br />
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+This is the Unity Play view showing the players, their UI, and 3D model representation of the board.
+![UnityView](https://github.com/ryandaepark/3DTicTacToe/assets/57121651/60d7101d-9b5e-4a27-aa02-564bec5cebc3)
+
+This is the 3D UI from the game view.
+![3dUi](https://github.com/ryandaepark/3DTicTacToe/assets/57121651/3cf09489-a431-4436-9055-b6d4aa109656)
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [X] Add multiplayer capabilities
+- [X] Fix bug where moves are not stored properly
+- [ ] Make game turn based
+- [ ] Highlight last move
 
